@@ -298,7 +298,7 @@ function construct(::StructTypes.DictType, PT, row, col, coloffset, prefix, nm, 
             val = construct(StructTypes.StructType(V), T, row, i, Ref{Int}(0), Symbol(), nm, V; kw...)
             off += 1
             if K == Symbol
-                x[nm] = val
+                x[Symbol(replace(string(nm),prefix=>""))] = val
             else
                 x[StructTypes.construct(K, String(nm))] = val
             end
